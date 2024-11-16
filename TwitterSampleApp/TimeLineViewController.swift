@@ -12,5 +12,11 @@ class TimeLineViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         print("TimeLineViewControllerが表示されました")
+
+        tableView.separatorColor = .lightGray
+        tableView.separatorStyle = .singleLine
+        if #available(iOS 18.0, *) {
+            tableView.fillerRowHeight = 50
+        }
     }
 }
