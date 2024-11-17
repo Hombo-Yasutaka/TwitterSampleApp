@@ -10,6 +10,7 @@ import UIKit
 class TimeLineViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         print("TimeLineViewControllerが表示されました")
 
