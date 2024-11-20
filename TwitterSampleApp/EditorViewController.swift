@@ -9,6 +9,8 @@ import UIKit
 
 class EditorViewController: UIViewController {
 
+    private let placeholderText = "いまどうしてる？"
+
     @IBOutlet weak var tweetButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var textField: UITextField!
@@ -18,6 +20,7 @@ class EditorViewController: UIViewController {
         super.viewDidLoad()
 
         configureTweetButton()
+        configureTextView()
     }
 
 
@@ -27,5 +30,29 @@ class EditorViewController: UIViewController {
 
     func configureTweetButton() {
         tweetButton.layer.cornerRadius = tweetButton.bounds.height / 2
+    }
+
+    func configureTextView() {
+        textView.text = placeholderText
+        textView.textColor = UIColor.lightGray
+
+        textView.delegate = self
+    }
+}
+
+extension EditorViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholderText && textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+            textView.textColor = UIColor.lightGray
+        }
     }
 }
