@@ -23,7 +23,6 @@ class EditorViewController: UIViewController {
         configureTextView()
     }
 
-
     @IBAction func tappedCancelButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
