@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ylX-I1-MIC">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="ylX-I1-MIC" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IUx-0e-AQT">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="62" width="402" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -29,25 +29,43 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TimeLineViewController" customModule="TwitterSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-7p-TBt">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="106" width="402" height="634"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPy-Dq-LqL">
+                                <rect key="frame" x="336" y="740" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ek8-jw-DfW"/>
+                                    <constraint firstAttribute="width" constant="50" id="NZJ-8P-wk2"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="＋">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedAddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tq5-rY-sLP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a3F-7p-TBt" secondAttribute="bottom" constant="100" id="3cA-YT-zrm"/>
                             <constraint firstItem="a3F-7p-TBt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="O8S-jp-Z5p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jPy-Dq-LqL" secondAttribute="trailing" constant="16" id="Qo9-Xu-DeB"/>
+                            <constraint firstItem="jPy-Dq-LqL" firstAttribute="top" secondItem="a3F-7p-TBt" secondAttribute="bottom" id="XMN-DU-80r"/>
                             <constraint firstItem="a3F-7p-TBt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ep0-Fe-h12"/>
                             <constraint firstItem="a3F-7p-TBt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lLu-XE-Zw1"/>
-                            <constraint firstItem="a3F-7p-TBt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yGx-Mt-MZR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="z8f-OG-any"/>
                     <connections>
+                        <outlet property="addButton" destination="jPy-Dq-LqL" id="IM3-FE-bM4"/>
                         <outlet property="tableView" destination="a3F-7p-TBt" id="8wg-Lo-84x"/>
                     </connections>
                 </viewController>
@@ -59,6 +77,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
