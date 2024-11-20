@@ -32,7 +32,7 @@ class TimeLineViewController: UIViewController {
 
     @IBAction func tappedAddButton(_ sender: UIButton) {
         print("EditViewControllerへ遷移します")
-        transitionToEditViewController()
+        navigateToEditViewController()
     }
 
     func setTweetData() {
@@ -50,7 +50,7 @@ class TimeLineViewController: UIViewController {
         addButton.layer.cornerRadius = addButton.bounds.width / 2
     }
 
-    func transitionToEditViewController() {
+    func navigateToEditViewController() {
         let storyboard = UIStoryboard(name: "EditorViewController", bundle: nil)
         guard let nextVC = storyboard.instantiateInitialViewController() as? EditorViewController else { return }
         nextVC.modalPresentationStyle = .fullScreen
