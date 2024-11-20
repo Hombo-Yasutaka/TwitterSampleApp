@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Editor View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="EditorViewController" customModule="TwitterSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名を入力して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dt-q3-cDE">
+                                <rect key="frame" x="20" y="99" width="333" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lDk-tH-c0T">
+                                <rect key="frame" x="20" y="141" width="333" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOY-EK-BTT">
+                                <rect key="frame" x="237" y="57" width="116" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="JvK-9P-aAF"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ツイートする">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXm-fG-ngm">
+                                <rect key="frame" x="20" y="57" width="71" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="キャンセル"/>
+                                <connections>
+                                    <action selector="tappedCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7kr-7x-OTa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5dt-q3-cDE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="6ME-zi-2NJ"/>
+                            <constraint firstItem="5dt-q3-cDE" firstAttribute="top" secondItem="nXm-fG-ngm" secondAttribute="bottom" constant="12" id="GTl-hy-lIk"/>
+                            <constraint firstItem="nXm-fG-ngm" firstAttribute="top" secondItem="uOY-EK-BTT" secondAttribute="top" id="HKI-pH-Mz2"/>
+                            <constraint firstItem="uOY-EK-BTT" firstAttribute="trailing" secondItem="5dt-q3-cDE" secondAttribute="trailing" id="I3p-hd-HBR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lDk-tH-c0T" secondAttribute="bottom" constant="549" id="LY5-if-ulL"/>
+                            <constraint firstItem="nXm-fG-ngm" firstAttribute="bottom" secondItem="uOY-EK-BTT" secondAttribute="bottom" id="N38-4V-IkK"/>
+                            <constraint firstItem="lDk-tH-c0T" firstAttribute="trailing" secondItem="5dt-q3-cDE" secondAttribute="trailing" id="Nsk-8i-CVH"/>
+                            <constraint firstItem="lDk-tH-c0T" firstAttribute="leading" secondItem="5dt-q3-cDE" secondAttribute="leading" id="QQi-Ui-JJA"/>
+                            <constraint firstItem="5dt-q3-cDE" firstAttribute="leading" secondItem="nXm-fG-ngm" secondAttribute="leading" id="YIm-0M-iBF"/>
+                            <constraint firstItem="lDk-tH-c0T" firstAttribute="top" secondItem="5dt-q3-cDE" secondAttribute="bottom" constant="8" id="el2-NK-rk7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lDk-tH-c0T" secondAttribute="trailing" constant="40" id="hGd-cm-AbW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5dt-q3-cDE" secondAttribute="trailing" constant="40" id="lkK-rt-23m"/>
+                            <constraint firstItem="5dt-q3-cDE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="sQR-5C-faV"/>
+                            <constraint firstItem="lDk-tH-c0T" firstAttribute="leading" secondItem="nXm-fG-ngm" secondAttribute="leading" id="xau-TR-FE1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="nXm-fG-ngm" id="pkS-bK-rmm"/>
+                        <outlet property="textField" destination="5dt-q3-cDE" id="cPO-Hm-VxY"/>
+                        <outlet property="textView" destination="lDk-tH-c0T" id="RTm-R8-ewd"/>
+                        <outlet property="tweetButton" destination="uOY-EK-BTT" id="bgG-tM-FgN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
