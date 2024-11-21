@@ -18,14 +18,6 @@ class TimeLineViewController: UIViewController {
         super.viewDidLoad()
         print("TimeLineViewControllerが表示されました")
 
-        tableView.separatorColor = .lightGray
-        tableView.separatorStyle = .singleLine
-        if #available(iOS 18.0, *) {
-            tableView.fillerRowHeight = 50
-        }
-
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
         setTweetData()
         configureButton()
         configureTableView()
@@ -52,6 +44,14 @@ class TimeLineViewController: UIViewController {
     }
 
     func configureTableView() {
+        tableView.separatorColor = .lightGray
+        tableView.separatorStyle = .singleLine
+        if #available(iOS 18.0, *) {
+            tableView.fillerRowHeight = 50
+        }
+
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "TimeLineTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "TimeLineCellID")
     }
