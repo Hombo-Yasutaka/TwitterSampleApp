@@ -28,6 +28,7 @@ class TimeLineViewController: UIViewController {
         tableView.tableFooterView = UIView()
         setTweetData()
         configureButton()
+        configureTableView()
     }
 
     @IBAction func tappedAddButton(_ sender: UIButton) {
@@ -39,7 +40,7 @@ class TimeLineViewController: UIViewController {
         for i  in 1...5 {
             let tweetDataModel = TweetDataModel(
                 name: "ユーザー\(i)",
-                content: "ツイート\(i)"
+                content: i % 2 == 0 ? "ながーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーいツイート\(i)" : "短いツイート"
             )
             tweetDataList.append(tweetDataModel)
             
@@ -48,6 +49,11 @@ class TimeLineViewController: UIViewController {
 
     func configureButton() {
         addButton.layer.cornerRadius = addButton.bounds.width / 2
+    }
+
+    func configureTableView() {
+        let nib = UINib(nibName: "TimeLineTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "TimeLineCellID")
     }
 
     func navigateToEditViewController() {
@@ -64,11 +70,9 @@ extension TimeLineViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TimeLineCellID", for: indexPath)as! TimeLineTableViewCell
         let tweetDataModel: TweetDataModel = tweetDataList[indexPath.row]
-        cell.textLabel?.text = tweetDataModel.name
-        cell.textLabel?.font = .boldSystemFont(ofSize: 20)
-        cell.detailTextLabel?.text = tweetDataModel.content
+        cell.setup(userName: tweetDataModel.name, detail: tweetDataModel.content)
         return cell
     }
 }
