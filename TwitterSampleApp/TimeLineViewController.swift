@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TimeLineViewController: UIViewController {
 
@@ -18,9 +19,14 @@ class TimeLineViewController: UIViewController {
         super.viewDidLoad()
         print("TimeLineViewControllerが表示されました")
 
-        setTweetData()
         configureButton()
         configureTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTweetData()
+        tableView.reloadData()
     }
 
     @IBAction func tappedAddButton(_ sender: UIButton) {
@@ -29,14 +35,9 @@ class TimeLineViewController: UIViewController {
     }
 
     func setTweetData() {
-        for i  in 1...5 {
-            let tweetDataModel = TweetDataModel(
-                name: "ユーザー\(i)",
-                content: i % 2 == 0 ? "ながーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーいツイート\(i)" : "短いツイート"
-            )
-            tweetDataList.append(tweetDataModel)
-            
-        }
+        let realm = try! Realm()
+        let result = realm.objects(TweetDataModel.self)
+        tweetDataList = Array(result)
     }
 
     func configureButton() {
@@ -74,5 +75,15 @@ extension TimeLineViewController: UITableViewDataSource {
         let tweetDataModel: TweetDataModel = tweetDataList[indexPath.row]
         cell.setup(userName: tweetDataModel.name, detail: tweetDataModel.content)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let targetTweet = tweetDataList[indexPath.row]
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(targetTweet)
+        }
+        tweetDataList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }

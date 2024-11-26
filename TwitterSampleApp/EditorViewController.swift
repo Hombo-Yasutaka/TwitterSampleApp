@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EditorViewController: UIViewController {
 
@@ -16,11 +17,18 @@ class EditorViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
 
+    var tweetDataModel = TweetDataModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureTweetButton()
         configureTextView()
+    }
+
+    @IBAction func tappedTweetButton(_ sender: UIButton) {
+        saveTweetData(name: textField.text, content: textView.text)
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func tappedCancelButton(_ sender: UIButton) {
@@ -36,6 +44,16 @@ class EditorViewController: UIViewController {
         textView.textColor = UIColor.lightGray
 
         textView.delegate = self
+    }
+
+    func saveTweetData(name: String?, content: String?) {
+        let realm = try! Realm()
+        try! realm.write {
+            tweetDataModel.name = name ?? "未入力ユーザー"
+            tweetDataModel.content = content ?? "未入力ツイート"
+            realm.add(tweetDataModel)
+        }
+        print("name: \(tweetDataModel.name), content: \(tweetDataModel.content)")
     }
 }
 

@@ -38,6 +38,9 @@
                                 <state key="normal" title="ツイートする">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="tappedTweetButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6Gn-Ut-evh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXm-fG-ngm">
                                 <rect key="frame" x="20" y="57" width="71" height="30"/>
