@@ -52,6 +52,7 @@ class TimeLineViewController: UIViewController {
         }
 
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "TimeLineTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "TimeLineCellID")
@@ -60,8 +61,9 @@ class TimeLineViewController: UIViewController {
     func navigateToEditViewController() {
         let storyboard = UIStoryboard(name: "EditorViewController", bundle: nil)
         guard let nextVC = storyboard.instantiateInitialViewController() as? EditorViewController else { return }
-        nextVC.modalPresentationStyle = .fullScreen
-        present(nextVC, animated: true)
+        let navi = UINavigationController(rootViewController: nextVC)
+        navi.modalPresentationStyle = .fullScreen
+        navigationController?.present(navi, animated: true)
     }
 }
 
@@ -85,5 +87,15 @@ extension TimeLineViewController: UITableViewDataSource {
         }
         tweetDataList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+}
+
+extension TimeLineViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "EditorViewController", bundle: nil)
+        guard let nextVC = storyboard.instantiateViewController(identifier: "EditorViewController") as? EditorViewController else { return }
+        let tweetData = tweetDataList[indexPath.row]
+        nextVC.configureTweetData(with: tweetData)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }

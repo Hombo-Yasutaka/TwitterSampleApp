@@ -22,17 +22,37 @@ class EditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.hidesBackButton = true
         configureTweetButton()
         configureTextView()
     }
 
     @IBAction func tappedTweetButton(_ sender: UIButton) {
-        saveTweetData(name: textField.text, content: textView.text)
-        dismiss(animated: true, completion: nil)
+        if let text = textField.text, !text.isEmpty,
+           let content = textView.text, !content.isEmpty {
+            saveTweetData(name: textField.text, content: textView.text)
+            if presentingViewController != nil {
+                // モーダル遷移
+                dismiss(animated: true, completion: nil)
+            } else {
+                // ナビゲーション遷移
+                navigationController?.popViewController(animated: true)
+            }
+        } else {
+            showAlert(title: "項目が空です", message: "ユーザー名とツイート文を入力してください")
+        }
+
     }
 
     @IBAction func tappedCancelButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        if presentingViewController != nil {
+            // モーダル遷移
+            dismiss(animated: true, completion: nil)
+        } else {
+            // ナビゲーション遷移
+            navigationController?.popViewController(animated: true)
+        }
+
     }
 
     func configureTweetButton() {
@@ -40,20 +60,36 @@ class EditorViewController: UIViewController {
     }
 
     func configureTextView() {
-        textView.text = placeholderText
-        textView.textColor = UIColor.lightGray
-
+        if presentingViewController != nil {
+            // モーダル遷移
+            textView.text = placeholderText
+            textView.textColor = UIColor.lightGray
+        } else {
+            // ナビゲーション遷移
+            textField.text = tweetDataModel.name
+            textView.text = tweetDataModel.content
+        }
         textView.delegate = self
+    }
+
+    func configureTweetData(with tweet: TweetDataModel) {
+        self.tweetDataModel = tweet
     }
 
     func saveTweetData(name: String?, content: String?) {
         let realm = try! Realm()
         try! realm.write {
-            tweetDataModel.name = name ?? "未入力ユーザー"
-            tweetDataModel.content = content ?? "未入力ツイート"
+            tweetDataModel.name = name ?? ""
+            tweetDataModel.content = content ?? ""
             realm.add(tweetDataModel)
         }
-        print("name: \(tweetDataModel.name), content: \(tweetDataModel.content)")
+    }
+
+    func showAlert(title: String, message: String) {
+        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -70,6 +106,13 @@ extension EditorViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = placeholderText
             textView.textColor = UIColor.lightGray
+        }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 140 {
+            textView.text = String(textView.text.prefix(140))
+            showAlert(title: "文字数制限オーバー", message: "ツイートは140文字以内にしてください")
         }
     }
 }
