@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-7p-TBt">
-                                <rect key="frame" x="0.0" y="106" width="402" height="634"/>
+                                <rect key="frame" x="0.0" y="106" width="402" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPy-Dq-LqL">
@@ -55,10 +55,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a3F-7p-TBt" secondAttribute="bottom" constant="100" id="3cA-YT-zrm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a3F-7p-TBt" secondAttribute="bottom" id="3cA-YT-zrm"/>
                             <constraint firstItem="a3F-7p-TBt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="O8S-jp-Z5p"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jPy-Dq-LqL" secondAttribute="trailing" constant="16" id="Qo9-Xu-DeB"/>
-                            <constraint firstItem="jPy-Dq-LqL" firstAttribute="top" secondItem="a3F-7p-TBt" secondAttribute="bottom" id="XMN-DU-80r"/>
+                            <constraint firstItem="jPy-Dq-LqL" firstAttribute="top" secondItem="a3F-7p-TBt" secondAttribute="bottom" constant="-100" id="XMN-DU-80r"/>
                             <constraint firstItem="a3F-7p-TBt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ep0-Fe-h12"/>
                             <constraint firstItem="a3F-7p-TBt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lLu-XE-Zw1"/>
                         </constraints>
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58.778625954198468" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="58.208955223880594" y="3.432494279176201"/>
         </scene>
     </scenes>
     <resources>
@@ -79,7 +79,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
